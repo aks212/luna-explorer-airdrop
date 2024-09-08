@@ -1,0 +1,539 @@
+<html><head><base href=""><title>Luna Explorer Coin (LNX) Airdrop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+    :root {
+        --space-dark: #0a0a1a;
+        --space-blue: #1a1a4a;
+        --neon-blue: #00ffff;
+        --neon-green: #39ff14;
+        --neon-purple: #9d00ff;
+        --white: #ffffff;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--space-dark);
+        color: var(--white);
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: url('https://lunaexplorercoin.com/assets/space-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+        padding: 2rem;
+    }
+
+    .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(10, 10, 26, 0.8), rgba(26, 26, 74, 0.8));
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 2rem;
+        max-width: 800px;
+        width: 100%;
+        background: rgba(10, 10, 26, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .logo-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+        position: relative;
+    }
+
+    .logo {
+        width: 100%;
+        height: 100%;
+        animation: float 3s ease-in-out infinite, rotate 30s linear infinite, glow 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 5px var(--neon-blue)); }
+        50% { filter: drop-shadow(0 0 20px var(--neon-purple)); }
+    }
+
+    h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+
+    .tagline strong {
+        color: var(--neon-green);
+        font-weight: 700;
+    }
+
+    .airdrop-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: var(--neon-blue);
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--neon-blue);
+        background-color: rgba(0, 255, 255, 0.1);
+        color: var(--white);
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--neon-purple);
+        box-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+    }
+
+    .task-btn, .submit-btn {
+        font-family: 'Orbitron', sans-serif;
+        background: linear-gradient(45deg,
+            rgba(0, 255, 255, 0.8),
+            rgba(157, 0, 255, 0.8),
+            rgba(57, 255, 20, 0.8));
+        background-size: 200% 200%;
+        animation: gradientShift 5s ease infinite;
+        color: var(--white);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        margin: 0.5rem 0;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    .task-btn:hover, .submit-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
+    .task-btn.completed {
+        background: linear-gradient(45deg,
+            rgba(57, 255, 20, 0.8),
+            rgba(0, 255, 255, 0.8));
+        cursor: default;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .submit-btn {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        margin-top: 1rem;
+        background: linear-gradient(45deg,
+            rgba(157, 0, 255, 0.8),
+            rgba(0, 255, 255, 0.8),
+            rgba(57, 255, 20, 0.8));
+        background-size: 200% 200%;
+    }
+
+    .social-icons {
+        margin-top: 2rem;
+    }
+
+    .social-icons a {
+        color: var(--white);
+        font-size: 1.5rem;
+        margin: 0 12px;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: var(--neon-purple);
+        transform: scale(1.2);
+    }
+
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 10, 26, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .loading-spinner {
+        width: 100px;
+        height: 100px;
+        border: 5px solid var(--neon-blue);
+        border-top: 5px solid var(--neon-purple);
+        border-radius: 50%;
+        animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 20px var(--neon-blue); }
+        50% { box-shadow: 0 0 40px var(--neon-purple); }
+    }
+
+    .progress-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 1.5rem auto;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 25px;
+        background-color: rgba(0, 255, 255, 0.1);
+        border-radius: 12.5px;
+        overflow: hidden;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .progress {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+        transition: width 0.5s ease;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        animation: glowPulse 2s infinite;
+    }
+
+    .progress-text {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        color: var(--neon-blue);
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        font-weight: bold;
+        font-family: 'Orbitron', sans-serif;
+    }
+
+    .referral-points {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        color: var(--neon-green);
+        font-weight: bold;
+        text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+        font-family: 'Orbitron', sans-serif;
+    }
+
+    .timer-participants {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 1rem;
+        font-family: 'Orbitron', sans-serif;
+        color: var(--neon-blue);
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+
+    .timer, .participants {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+
+    .timer i, .participants i {
+        margin-right: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    #timer, #participants {
+        font-weight: bold;
+    }
+
+    @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-purple); }
+        50% { box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple); }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+        .content {
+            padding: 1.5rem;
+        }
+        .logo-container {
+            width: 100px;
+            height: 100px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .tagline {
+            font-size: 1rem;
+        }
+        .submit-btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="logo-container">
+                <img src="assets/images/LNX-logo.png" alt="Luna Explorer Coin Logo" class="logo" width="150" height="150">
+            </div>
+            <h1>Luna Explorer (LNX) Airdrop</h1>
+            <p class="tagline">Join the Mission, Explore the Future: Earn up to <strong>$50</strong> Worth of LNX Tokens in the Luna Explorer Airdrop!</p>
+            
+            <div class="timer-participants">
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">30d 00h 00m 00s</span>
+                </div>
+                <div class="participants">
+                    <i class="fas fa-users"></i>
+                    <span id="participants">10000</span> spots remaining
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <p class="progress-text">0/6 Tasks Completed</p>
+                <p class="referral-points">Referral Points: <span id="referral-points-value">0</span></p>
+            </div>
+
+            <form class="airdrop-form" id="airdrop-form">
+                <button type="button" class="task-btn" id="connect-wallet"><i class="fas fa-wallet"></i> Connect Wallet</button>
+                <button type="button" class="task-btn" id="twitter-follow"><i class="fab fa-twitter"></i> Follow Luna Explorer on Twitter</button>
+                <button type="button" class="task-btn" id="twitter-retweet"><i class="fas fa-retweet"></i> Retweet Luna Explorer's Pinned Tweet</button>
+                <button type="button" class="task-btn" id="telegram-join"><i class="fab fa-telegram"></i> Join Luna Explorer Telegram Group</button>
+                <div class="form-group">
+                    <label for="referral">Your Unique Referral Link</label>
+                    <input type="text" id="referral" name="referral" readonly placeholder="Click 'Generate Referral Link' button">
+                </div>
+                <button type="button" class="task-btn" id="referral-task"><i class="fas fa-link"></i> Generate Referral Link</button>
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Airdrop Entry</button>
+            </form>
+
+            <div class="social-icons">
+                <a href="https://twitter.com/LunaExplorerCoin" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://t.me/LunaExplorerCoin" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                <a href="https://discord.gg/LunaExplorerCoin" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
+                <a href="https://medium.com/@LunaExplorerCoin" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-overlay').style.display = 'none';
+            }, 1500);
+        });
+
+        let completedTasks = 0;
+        const totalTasks = 6; 
+        const progressBar = document.getElementById('progress');
+        const progressText = document.querySelector('.progress-text');
+
+        let referralPoints = 0;
+        const referralPointsDisplay = document.getElementById('referral-points-value');
+
+        function updateProgress() {
+            const percentage = (completedTasks / totalTasks) * 100;
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `${completedTasks}/${totalTasks} Tasks Completed`;
+        }
+
+        function completeTask(button) {
+            if (!button.classList.contains('completed')) {
+                button.classList.add('completed');
+                button.textContent = 'Task Completed';
+                completedTasks++;
+                updateProgress();
+            }
+        }
+
+        function updateReferralPoints() {
+            referralPointsDisplay.textContent = referralPoints;
+        }
+
+        // Timer and participants counter
+        const timerElement = document.getElementById('timer');
+        const participantsElement = document.getElementById('participants');
+
+        let timeLeft = 30 * 24 * 60 * 60; // 30 days in seconds
+        let participants = 10000;
+
+        function updateTimer() {
+            const days = Math.floor(timeLeft / (24 * 60 * 60));
+            const hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
+            const minutes = Math.floor((timeLeft % (60 * 60)) / 60);
+            const seconds = timeLeft % 60;
+
+            timerElement.textContent = `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+
+            if (timeLeft > 0) {
+                timeLeft--;
+            }
+        }
+
+        function updateParticipants() {
+            if (participants > 0) {
+                participants -= Math.floor(Math.random() * 3); // Decrease by 0, 1, or 2
+                participants = Math.max(0, participants); // Ensure it doesn't go below 0
+                participantsElement.textContent = participants.toLocaleString();
+            }
+        }
+
+        // Update timer and participants every second
+        setInterval(() => {
+            updateTimer();
+            updateParticipants();
+        }, 1000);
+
+        // Initial update
+        updateTimer();
+        updateParticipants();
+
+        document.getElementById('connect-wallet').addEventListener('click', function() {
+            setTimeout(() => {
+                alert('Wallet connected successfully!');
+                completeTask(this);
+            }, 1000);
+        });
+
+        document.getElementById('twitter-follow').addEventListener('click', function() {
+            window.open('https://twitter.com/intent/follow?screen_name=LunaExplorerCoin', '_blank');
+            completeTask(this);
+        });
+
+        document.getElementById('twitter-retweet').addEventListener('click', function() {
+            window.open('https://twitter.com/intent/retweet?tweet_id=PINNED_TWEET_ID', '_blank');
+            completeTask(this);
+        });
+
+        document.getElementById('telegram-join').addEventListener('click', function() {
+            window.open('https://t.me/LunaExplorerCoin', '_blank');
+            completeTask(this);
+        });
+
+        document.getElementById('referral-task').addEventListener('click', function() {
+            const referralLink = 'https://lunaexplorercoin.com/airdrop?ref=' + Math.random().toString(36).substring(7);
+            
+            document.getElementById('referral').value = referralLink;
+            
+            navigator.clipboard.writeText(referralLink).then(function() {
+                alert('Your unique referral link has been generated and copied to clipboard: ' + referralLink);
+                completeTask(document.getElementById('referral-task'));
+                
+                referralPoints += 10;
+                updateReferralPoints();
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+
+        document.getElementById('airdrop-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            document.getElementById('loading-overlay').style.display = 'flex';
+
+            setTimeout(function() {
+                document.getElementById('loading-overlay').style.display = 'none';
+                alert('Thank you for participating in the Luna Explorer Coin Airdrop! We will review your entry and contact you soon.');
+
+                e.target.reset();
+                completedTasks = 0;
+                referralPoints = 0;
+                updateProgress();
+                updateReferralPoints();
+                document.querySelectorAll('.task-btn').forEach(btn => {
+                    btn.classList.remove('completed');
+                    btn.textContent = btn.textContent.replace('Completed', 'Complete');
+                });
+            }, 2000);
+        });
+    </script>
+</body></html>
